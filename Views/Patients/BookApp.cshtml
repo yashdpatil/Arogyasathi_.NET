@@ -1,0 +1,99 @@
+﻿@model AarogyaSaathi.Dto.BookingView
+
+@{
+    ViewData["Title"] = "BookApp";
+}
+
+
+
+
+<hr />
+
+<div class="row" >
+        <div class="col-md-6 col-md-offset-2">
+            <h4>Our Doctors</h4>
+
+            <table style="width:100%; border-collapse:collapse; margin-top:20px;">
+                <thead>
+                    <tr>
+                        <th style="padding:10px; text-align:left; border:1px solid #ddd; background-color:#f2f2f2;">Name</th>
+                        <th style="padding:10px; text-align:left; border:1px solid #ddd; background-color:#f2f2f2;">Specialization</th>
+                        <th style="padding:10px; text-align:left; border:1px solid #ddd; background-color:#f2f2f2;">Qualification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">Dr. Aarav Kumar</td>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">Cardiologist</td>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">MBBS, MD</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">Dr. Riya Sharma</td>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">Orthopedic Surgeon</td>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">MBBS, MS</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">Dr. Advait Patel</td>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">Ophthalmologist</td>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">MBBS</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">Dr. Naina Reddy</td>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">Dermatologist</td>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">MBBS, MD</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">Dr. Aniket Singh</td>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">Physician</td>
+                        <td style="padding:10px; text-align:left; border:1px solid #ddd;">MBBS, MS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+     
+
+        <div class="col-md-4" style="margin-left:100px">
+            <h4>Book Appointment Here</h4>
+        <form asp-action="BookApp">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DoctorId" class="control-label">Doctor</label>
+                <select asp-for="DoctorId" class="form-control" >
+                <option value="">Select a doctor</option>
+                    <option value="4f73b397-7ea3-4869-87c8-275ad97006c6">Dr. Aarav Kumar</option>
+                    <option value="4e57e90a-fc92-4d1e-83a8-e2e41788c5c9">Dr. Riya Sharma</option>
+                    <option value="8d88fe0c-86d0-4823-affb-13d9a230373e">Dr. Advait Patel</option>
+                    <option value="e9d065d3-a646-4d82-86c8-0851b1690dac">Dr. Naina Reddy</option>
+                    <option value="cfeabdc4-528f-44dc-bcff-8346ab04f9fa">Dr. Aniket Singh</option>
+                </select>
+                <span asp-validation-for="DoctorId" class="text-danger"></span>
+            </div>
+            <br/>
+            <div class="form-group">
+                <label asp-for="Symptoms" class="control-label"></label>
+                <input asp-for="Symptoms" class="form-control" placeholder="Enter symptoms"/>
+                <span asp-validation-for="Symptoms" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="BookingDate" class="control-label">Appointment Date</label>
+                <input asp-for="BookingDate" class="form-control" />
+                <span asp-validation-for="BookingDate" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+            @* <div>
+                <a asp-action="Index">Back to List</a>
+            </div> *@
+    </div>
+</div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

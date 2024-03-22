@@ -1,0 +1,85 @@
+﻿@model IEnumerable<AarogyaSaathi.Models.Appointment>
+
+@{
+
+    ViewData["Title"] = "ShowApp";
+
+}
+
+<h3>My Appointments</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Doctor Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Symptoms)
+            </th>
+            <th>
+                Appointment Date
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.PatientId)
+            </th> *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @{
+                        var doctorName = GetDoctorName(item.DoctorId);
+                        @doctorName
+                    }
+
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Symptoms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.PatientId)
+            </td> *@
+            <td>
+                    <a asp-action="EditApp" asp-route-id="@item.Id" class="btn btn-success">Edit</a> |
+                   
+                    <a asp-action="DeleteApp" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@functions {
+    string GetDoctorName(string doctorId)
+    {
+       
+        switch (doctorId)
+        {
+            case "4f73b397-7ea3-4869-87c8-275ad97006c6":
+                return "Dr. Aarav Kumar";
+            case "4e57e90a-fc92-4d1e-83a8-e2e41788c5c9":
+                return "Dr. Riya Sharma";
+            case "8d88fe0c-86d0-4823-affb-13d9a230373e":
+                return "Dr. Advait Patel";
+            case "e9d065d3-a646-4d82-86c8-0851b1690dac":
+                return "Dr. Naina Reddy";
+            case "cfeabdc4-528f-44dc-bcff-8346ab04f9fa":
+                return "Dr. Aniket Singh";
+
+            default:
+                return "Unknown Doctor";
+        }
+    }
+}
